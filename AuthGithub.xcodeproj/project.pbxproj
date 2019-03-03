@@ -12,6 +12,7 @@
 		86873D70222C55170070FCD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86873D6E222C55170070FCD8 /* Main.storyboard */; };
 		86873D72222C551E0070FCD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86873D71222C551E0070FCD8 /* Assets.xcassets */; };
 		86873D75222C551E0070FCD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86873D73222C551E0070FCD8 /* LaunchScreen.storyboard */; };
+		86873D7E222C5CAD0070FCD8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86873D7D222C5CAD0070FCD8 /* Kingfisher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		86873D71222C551E0070FCD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86873D74222C551E0070FCD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86873D76222C551E0070FCD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86873D7D222C5CAD0070FCD8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86873D7E222C5CAD0070FCD8 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				86873D69222C55170070FCD8 /* AuthGithub */,
 				86873D68222C55170070FCD8 /* Products */,
+				86873D7C222C5CAC0070FCD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +68,14 @@
 			path = AuthGithub;
 			sourceTree = "<group>";
 		};
+		86873D7C222C5CAC0070FCD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86873D7D222C5CAD0070FCD8 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +86,7 @@
 				86873D63222C55170070FCD8 /* Sources */,
 				86873D64222C55170070FCD8 /* Frameworks */,
 				86873D65222C55170070FCD8 /* Resources */,
+				86873D7F222C5D510070FCD8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +142,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		86873D7F222C5D510070FCD8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		86873D63222C55170070FCD8 /* Sources */ = {
@@ -283,6 +318,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AuthGithub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +339,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AuthGithub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
