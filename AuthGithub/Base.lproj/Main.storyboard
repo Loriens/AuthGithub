@@ -47,6 +47,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="tl0-X3-McC"/>
+                    <connections>
+                        <outlet property="logoView" destination="W2M-cD-X4b" id="qtJ-cW-HJE"/>
+                        <outlet property="passwordField" destination="ofD-uF-4zn" id="tLK-6B-hhk"/>
+                        <outlet property="usernameField" destination="K5k-fq-bBL" id="GYG-IN-lCV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

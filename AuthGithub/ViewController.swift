@@ -9,13 +9,18 @@
 import UIKit
 import Kingfisher
 
-class ViewController: UIViewController {
-
+class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let logoURL = URL(string: "https://i2.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png")
+        logoView.kf.setImage(with: logoURL)
     }
-
 
 }
 
