@@ -22,5 +22,12 @@ class LoginViewController: UIViewController {
         logoView.kf.setImage(with: logoURL)
     }
 
+    @IBAction func loginPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let userVC = storyboard.instantiateViewController(withIdentifier: "userViewController")
+        
+        navigationController?.pushViewController(userVC, animated: true)
+    }
+    
 }
 
