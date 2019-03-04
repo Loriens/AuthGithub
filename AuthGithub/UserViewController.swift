@@ -38,7 +38,7 @@ class UserViewController: UIViewController {
             sortOrder = "desc"
         }
         
-        guard var url = URL(string: "https://api.github.com/search/repositories?q=\(repos)+language:\(language)&sort=stars&order=\(sortOrder)") else {
+        guard let url = URL(string: "https://api.github.com/search/repositories?q=\(repos)+language:\(language)&sort=stars&order=\(sortOrder)") else {
             print("url is empty")
             return
         }
