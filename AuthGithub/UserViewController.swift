@@ -43,8 +43,6 @@ class UserViewController: UIViewController {
             return
         }
         
-        print(url)
-        
         let request = URLRequest(url: url)
         
         let dataTask = sharedSession.dataTask(with: request) { (data, respons, error) in
