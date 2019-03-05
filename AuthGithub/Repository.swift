@@ -12,17 +12,21 @@ struct Repository {
     private(set) var title: String
     private(set) var description: String
     private(set) var author: String
+    private(set) var avatarURL: String
     private(set) var owner: Owner
     
     struct Owner {
         private(set) var author: String
+        private(set) var avatarURL: String
         
         init? (json: Dictionary<String, Any>) {
-            guard let login = json["login"] as? String else {
+            guard let login = json["login"] as? String,
+            let avatarURL = json["avatar_url"] as? String else {
                 return nil
             }
             
-            author = login
+            self.author = login
+            self.avatarURL = avatarURL
         }
     }
     
@@ -42,6 +46,7 @@ struct Repository {
         self.title = title
         self.owner = Owner(json: owner)!
         self.author = self.owner.author
+        self.avatarURL = self.owner.avatarURL
     }
     
     

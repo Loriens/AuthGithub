@@ -78,6 +78,15 @@ class UserViewController: UIViewController {
                     }
                     repositories.append(Repository(json: item)!)
                 }
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let ReposTableVC = storyboard.instantiateViewController(withIdentifier: "ReposTableVC") as! ReposTableViewController
+                
+                DispatchQueue.main.async {
+                    ReposTableVC.repositories = repositories
+                    
+                    self.navigationController?.pushViewController(ReposTableVC, animated: true)
+                }
             } else {
                 print("cannot create object form JSON")
             }
