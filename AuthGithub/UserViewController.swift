@@ -71,26 +71,13 @@ class UserViewController: UIViewController {
                 
                 var repositories = [Repository]()
                 
-                // Достаём каждый репозиторий по отдельности
                 for item in items {
-                    // Преобразуем в словарь
-                    guard let item = item as? Dictionary<String, Any> else {
+                    guard let item = item as? [String: Any] else {
                         print("cannot convert item to dictionary")
                         return
                     }
-                    
-                    var dictItem: [String: Any] = [String: Any]()
-                    
-                    // Преобразуем словарь в словарь, который прочитаешь наша структура :D
-                    for (key, value) in item {
-                        dictItem[key] = value
-                    }
-                    
-                    // Добавляем структура в список всех репозиториев
-                    repositories.append(Repository(json: dictItem)!)
+                    repositories.append(Repository(json: item)!)
                 }
-                
-                print(repositories)
             } else {
                 print("cannot create object form JSON")
             }

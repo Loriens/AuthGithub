@@ -28,13 +28,18 @@ struct Repository {
     
     init? (json: [String: Any]) {
         guard let title = json["name"] as? String,
-            let description = json["description"] as? String,
             let owner = json["owner"] as? Dictionary<String, Any> else {
             return nil
         }
         
+        // У некоторых репозиториев нет описания, поэтому отдельная проверка на этот случай
+        if let description = json["description"] as? String {
+            self.description = description
+        } else {
+            self.description = ""
+        }
+        
         self.title = title
-        self.description = description
         self.owner = Owner(json: owner)!
         self.author = self.owner.author
     }
