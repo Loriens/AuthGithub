@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8621A423222EA10F0091B670 /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621A422222EA10F0091B670 /* ReposTableViewController.swift */; };
 		8647F26F222D7DE9004BF6B7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647F26E222D7DE9004BF6B7 /* UserViewController.swift */; };
 		86873D6B222C55170070FCD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86873D6A222C55170070FCD8 /* AppDelegate.swift */; };
 		86873D6D222C55170070FCD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86873D6C222C55170070FCD8 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8621A422222EA10F0091B670 /* ReposTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewController.swift; sourceTree = "<group>"; };
 		8647F26E222D7DE9004BF6B7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		86873D67222C55170070FCD8 /* AuthGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86873D6A222C55170070FCD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				86873D6C222C55170070FCD8 /* ViewController.swift */,
 				86873D6E222C55170070FCD8 /* Main.storyboard */,
 				8647F26E222D7DE9004BF6B7 /* UserViewController.swift */,
+				8621A422222EA10F0091B670 /* ReposTableViewController.swift */,
 				86873D71222C551E0070FCD8 /* Assets.xcassets */,
 				86873D73222C551E0070FCD8 /* LaunchScreen.storyboard */,
 				86873D76222C551E0070FCD8 /* Info.plist */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86873D6D222C55170070FCD8 /* ViewController.swift in Sources */,
+				8621A423222EA10F0091B670 /* ReposTableViewController.swift in Sources */,
 				8647F26F222D7DE9004BF6B7 /* UserViewController.swift in Sources */,
 				86873D6B222C55170070FCD8 /* AppDelegate.swift in Sources */,
 			);
