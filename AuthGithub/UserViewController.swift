@@ -66,6 +66,7 @@ class UserViewController: UIViewController {
                 print("data encoding failed")
                 return
             }
+            
             print(text)
         }
         
