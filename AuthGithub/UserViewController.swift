@@ -23,6 +23,15 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // Скрывает клавиатуру при нажатии на экран вне UITextField
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first as? UITouch {
+            view.endEditing(true)
+        }
+        
+        super.touchesBegan(touches, with: event)
+    }
+    
     @IBAction func searchPressed(_ sender: Any) {
         if let repos = repositoryField.text {
             self.repos = repos
