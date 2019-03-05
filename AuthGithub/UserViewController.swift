@@ -25,7 +25,7 @@ class UserViewController: UIViewController {
     
     // Скрывает клавиатуру при нажатии на экран вне UITextField
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first as? UITouch {
+        if let _ = touches.first as? UITouch {
             view.endEditing(true)
         }
         
@@ -52,7 +52,7 @@ class UserViewController: UIViewController {
         
         let request = URLRequest(url: url)
         
-        let dataTask = sharedSession.dataTask(with: request) { (data, respons, error) in
+        let dataTask = sharedSession.dataTask(with: request) { (data, responce, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -62,12 +62,38 @@ class UserViewController: UIViewController {
                 return
             }
             
-            guard let text = String(data: data, encoding: .utf8) else {
-                print("data encoding failed")
-                return
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                // Достаём все репозитории
+                guard let items = json!["items"] as? Array<Any> else {
+                    print("items are not found")
+                    return
+                }
+                
+                var repositories = [Repository]()
+                
+                // Достаём каждый репозиторий по отдельности
+                for item in items {
+                    // Преобразуем в словарь
+                    guard let item = item as? Dictionary<String, Any> else {
+                        print("cannot convert item to dictionary")
+                        return
+                    }
+                    
+                    var dictItem: [String: Any] = [String: Any]()
+                    
+                    // Преобразуем словарь в словарь, который прочитаешь наша структура :D
+                    for (key, value) in item {
+                        dictItem[key] = value
+                    }
+                    
+                    // Добавляем структура в список всех репозиториев
+                    repositories.append(Repository(json: dictItem)!)
+                }
+                
+                print(repositories)
+            } else {
+                print("cannot create object form JSON")
             }
-            
-            print(text)
         }
         
         dataTask.resume()
