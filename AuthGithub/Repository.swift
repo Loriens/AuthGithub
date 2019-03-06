@@ -34,7 +34,7 @@ struct Repository {
     init? (json: [String: Any]) {
         guard let title = json["name"] as? String,
             let owner = json["owner"] as? Dictionary<String, Any>,
-            let reposURL = json["url"] as? String else {
+            let reposURL = json["html_url"] as? String else {
             return nil
         }
         
@@ -47,6 +47,7 @@ struct Repository {
         
         self.title = title
         self.reposURL = reposURL
+        print(reposURL)
         self.owner = Owner(json: owner)!
         self.author = self.owner.author
         self.avatarURL = self.owner.avatarURL
