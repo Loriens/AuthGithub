@@ -16,7 +16,6 @@ class ReposTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(UINib(nibName: "ReposTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.allowsSelection = false
     }
 
     // MARK: - Table view data source
@@ -56,6 +55,15 @@ class ReposTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 70
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ReposWebViewVC = storyboard.instantiateViewController(withIdentifier: "ReposWebVC") as! ReposWebViewController
+        
+        ReposWebViewVC.repoHtml = repositories![indexPath.item].reposURL
+        
+        self.navigationController?.pushViewController(ReposWebViewVC, animated: true)
     }
 
 }

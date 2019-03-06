@@ -9,16 +9,28 @@
 import UIKit
 import WebKit
 
-class ReposWebViewController: UIViewController {
+class ReposWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
     @IBOutlet weak var webView: WKWebView!
+    // Ссылка на репозиторий в виде строки
+    var repoHtml: String?
+    
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        
+        view = webView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.webView.frame = self.view.frame
 
-        // Do any additional setup after loading the view.
+        let repoURL = URL(string: repoHtml!)!
+        let request = URLRequest(url: repoURL)
+        webView.load(request)
+        webView.allowsBackForwardNavigationGestures = true
     }
     
 
