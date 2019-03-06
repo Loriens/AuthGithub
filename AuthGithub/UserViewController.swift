@@ -21,6 +21,10 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Округление avatarView
+        self.avatarView.layer.masksToBounds = true
+//        self.avatarView.layer.cornerRadius = self.avatarView.frame.width / 2
     }
     
     // Скрывает клавиатуру при нажатии на экран вне UITextField
