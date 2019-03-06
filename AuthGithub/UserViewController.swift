@@ -7,29 +7,35 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserViewController: UIViewController {
     
+    @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var repositoryField: UITextField!
     @IBOutlet weak var languageField: UITextField!
     @IBOutlet weak var sortSearchControl: UISegmentedControl!
     
     let sharedSession = URLSession.shared
+    var username: String!
+    var avatarURL: String!
     var repos = ""
     var language = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.helloLabel.text = "Hello \(username!)"
+        self.avatarView.kf.setImage(with: URL(string: avatarURL))
         // Округление avatarView
         self.avatarView.layer.masksToBounds = true
-//        self.avatarView.layer.cornerRadius = self.avatarView.frame.width / 2
+        self.avatarView.layer.cornerRadius = self.avatarView.frame.width / 2
     }
     
     // Скрывает клавиатуру при нажатии на экран вне UITextField
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let _ = touches.first as? UITouch {
+        if let touch = touches.first as? UITouch {
             view.endEditing(true)
         }
         

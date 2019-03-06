@@ -47,7 +47,6 @@ struct Repository {
         
         self.title = title
         self.reposURL = reposURL
-        print(reposURL)
         self.owner = Owner(json: owner)!
         self.author = self.owner.author
         self.avatarURL = self.owner.avatarURL
