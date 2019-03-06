@@ -11,12 +11,19 @@ import WebKit
 
 class ReposWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
-    @IBOutlet weak var webView: WKWebView!
     // Ссылка на репозиторий в виде строки
     var repoHtml: String?
+    var webView: WKWebView!
     
     override func loadView() {
+        let source = "document.body.style.background = \"#808080\";"
+        let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        
+        let userContentController = WKUserContentController()
+        userContentController.addUserScript(userScript)
+        
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -32,16 +39,5 @@ class ReposWebViewController: UIViewController, WKUIDelegate, WKNavigationDelega
         webView.load(request)
         webView.allowsBackForwardNavigationGestures = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
