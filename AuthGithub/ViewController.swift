@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
     
@@ -25,8 +26,17 @@ class LoginViewController: UIViewController {
             let decoder = JSONDecoder()
             let account = try? decoder.decode(Account.self, from: jsonData)
             
-            self.loginPressed(account)
+            authenticateUser(account: account)
         }
+    }
+    
+    // Скрывает клавиатуру при нажатии на экран вне UITextField
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first as? UITouch {
+            view.endEditing(true)
+        }
+        
+        super.touchesBegan(touches, with: event)
     }
 
     @IBAction func loginPressed(_ sender: Any) {
@@ -166,6 +176,50 @@ extension LoginViewController {
         item[kSecValueData as String] = accountData as AnyObject
         let status = SecItemAdd(item as CFDictionary, nil)
         return status == noErr
+    }
+    
+}
+
+// Add Touch ID auth
+extension LoginViewController {
+    func authenticateUser(account: Account?) {
+        if #available(iOS 8.0, *, *) {
+            let authenticationContext = LAContext()
+            setupAuthenticationContext(context: authenticationContext)
+            let reason = "Fast and safe authentication in your app"
+            var authError: NSError?
+            
+            if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                    [unowned self] success, evaluateError in
+                    if success {
+                        // Пользователь успешно прошел аутентификацию
+                        
+                        self.loginPressed(account)
+                    } else {
+                        // Пользователь не прошел аутентификацию
+                        
+                        if let error = evaluateError {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+            } else {
+                // Не удалось выполнить проверку на использование биометрических данных или пароля для аутентификации
+                
+                if let error = authError {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func setupAuthenticationContext(context: LAContext) {
+        context.localizedReason = "Use for fast and safe authentication in your app"
+        context.localizedCancelTitle = "Cancel"
+        context.localizedFallbackTitle = "Enter password"
+        
+        context.touchIDAuthenticationAllowableReuseDuration = 600
     }
     
 }
