@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8613050E22313B54005C2863 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613050D22313B53005C2863 /* Account.swift */; };
 		8621A423222EA10F0091B670 /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621A422222EA10F0091B670 /* ReposTableViewController.swift */; };
 		8621A425222EA5250091B670 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8621A424222EA5250091B670 /* Repository.swift */; };
 		8647F26F222D7DE9004BF6B7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647F26E222D7DE9004BF6B7 /* UserViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8613050D22313B53005C2863 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8621A422222EA10F0091B670 /* ReposTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewController.swift; sourceTree = "<group>"; };
 		8621A424222EA5250091B670 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		8647F26E222D7DE9004BF6B7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				86873D6A222C55170070FCD8 /* AppDelegate.swift */,
 				86873D6C222C55170070FCD8 /* ViewController.swift */,
+				8613050D22313B53005C2863 /* Account.swift */,
 				86873D6E222C55170070FCD8 /* Main.storyboard */,
 				8647F26E222D7DE9004BF6B7 /* UserViewController.swift */,
 				8621A422222EA10F0091B670 /* ReposTableViewController.swift */,
@@ -194,6 +197,7 @@
 				86C1EBA9223048FE00A03412 /* ReposWebViewController.swift in Sources */,
 				8621A425222EA5250091B670 /* Repository.swift in Sources */,
 				8647F26F222D7DE9004BF6B7 /* UserViewController.swift in Sources */,
+				8613050E22313B54005C2863 /* Account.swift in Sources */,
 				86873D6B222C55170070FCD8 /* AppDelegate.swift in Sources */,
 				8669E353222ED53500DE128A /* ReposTableViewCell.swift in Sources */,
 			);
